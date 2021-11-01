@@ -1,0 +1,12 @@
+.idea
+static/uploadfile
+main.exe
+wikipay-admin
+temp/
+!temp
+vendor
+config/settings.dev.yml
+wikipay-admin
+*.exe
+*.zip
+.vscode

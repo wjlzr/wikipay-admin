@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package rpc;
+
+service Wallet {
+    //获取地址
+    rpc GetAddress (AddressRequest) returns (AddressReply) {}
+    //验证地址
+    rpc ValidateAddress (ValidateAddressRequest) returns (ValidateAddressReply) {}
+    //提现
+    rpc Withdraw (WithdrawRequest) returns (WithdrawReply) {}
+    //获取账户
+    rpc GetAccounts(AccountsRequest) returns(AccountsReply){}
+    //获取余额
+    rpc GetBalance(BalanceRequest) returns(BalanceReply){}
+    //获取账户和余额
+    rpc GetAccountAndBalance(AccountAndBalanceRequest) returns(AccountAndBalanceReply){}
+    //获取网络状态 
+    rpc GetNetworkInfo(NetworkInfoRequest) returns(NetworkInfoReply){}
+    //获取美元价格
+    rpc GetUsdPrice(UsdPriceRequest) returns(UsdPriceReply){}
+    //获取货币价格
+    rpc GetCurrency(CurrencyRequest) returns(CurrencyReply){}
+    //从指定手结费地址发送交易
+    rpc FundedSend(FundedSendRequest) returns(FundedSendReply){}
+    //获取未花费的地址及余额
+    rpc GetUnspentBalance(UnspentBalanceRequest) returns(UnspentBalanceReply){}
+}
+
+message UnspentBalanceRequest{
+    string coin = 1;
+    repeated string address = 2;
+}
+message UnspentBalanceReply{
+    repeated CoinAccount Accounts = 1;
+}
+
+
+message FundedSendRequest{
+    string coin = 1;
+    string fromAddress = 2;
+    string toAddress = 3;
+    string amount = 4;
+    string feeAddress = 5;
+}
+message FundedSendReply{
+    string txId = 1;
+}
+
+message CurrencyRequest{
+    string name = 1;
+}
+message CurrencyReply{
+    double price = 1;
+}
+
+message UsdPriceRequest{
+    string coin = 1;
+}
+message UsdPriceReply{
+    double price = 2;
+}
+
+message NetworkInfoRequest{
+    string coin = 1;
+}
+message NetworkInfoReply{
+    string version = 1;
+    bool active = 2;
+    string warnings = 3;
+}
+
+message AccountAndBalanceRequest{
+    string coin = 1 ;
+}
+message AccountAndBalanceReply{
+    repeated CoinAccount Accounts = 1;
+}
+message CoinAccount{
+    string address =1 ;
+    double balance = 2;
+}
+
+message BalanceRequest{
+    string coin = 1 ;
+    string address = 2 ;
+}
+message BalanceReply{
+    double balance = 1;
+}
+
+message AccountsRequest{
+    string coin = 1 ;
+}
+message AccountsReply{
+    repeated string  accounts = 1 ;
+}
+
+
+message AddressRequest {
+    string Coin = 1;
+}
+message AddressReply {
+    string Address = 1;
+}
+
+message ValidateAddressRequest {
+    string Coin = 1;
+    string Address = 2;
+}
+message ValidateAddressReply {
+    bool Status = 1;
+}
+
+//提现
+message WithdrawRequest {
+    string Coin = 1;
+    double Amount = 2;
+    string FromAddress = 3;
+    string ToAddress = 4;
+}
+message WithdrawReply {
+    string Txid = 1;
+}

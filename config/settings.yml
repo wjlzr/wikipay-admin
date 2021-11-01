@@ -1,0 +1,33 @@
+settings:
+  application:
+    mode: dev # dev开发环境 test测试环境 prod线上环境
+    host: 0.0.0.0
+    name: WikiPay-Admin
+    port: 8003
+    readtimeout: 1
+    writertimeout: 2
+  log:
+    dir: temp/logs
+  jwt:
+    secret: Wiki2#3oicm#(@)344
+    timeout: 3600
+#  database:
+#    name: wikibank
+#    dbtype: mysql
+#    host: 192.168.1.69
+#    password: WikiBank#888
+#    port: 3306
+#    username: root
+  database:
+      name: wikibank
+      dbtype: mysql
+      host: 127.0.0.1
+      password: 123456
+      port: 3306
+      username: root
+  rediscluster:                                        #redis集群
+    addrs: ["192.168.1.69:9001","192.168.1.69:9002","192.168.1.69:9003","192.168.1.69:9004","192.168.1.69:9005","192.168.1.69:9006"]
+    password: "YcIPfs1829@129"                            #密码
+    dialtimeout: 10                                      #超时时间
+    poolsize: 20
+

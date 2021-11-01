@@ -1,0 +1,26 @@
+settings:
+    application:
+      mode: dev  # dev开发环境 test测试环境 prod线上环境
+      host: 0.0.0.0
+      name: WikiPay-Admin
+      port: 6622
+      readtimeout: 1
+      writertimeout: 2
+    log:
+      dir: temp/logs
+    jwt:
+      secret: Wiki2#3oicm#(@)344
+      timeout: 7200
+    database:
+      name: wikipay
+      dbtype: mysql
+      host: wikipay.ct1bubs4kljp.ap-east-1.rds.amazonaws.com
+      password: Wiki2020
+      port: 3306
+      username: wiki
+    rediscluster:                                        #redis集群
+      addrs: addrs = ["172.31.5.5:9001","172.31.5.5:9002","172.31.10.3:9001","172.31.10.3:9002","172.31.9.186:9001","172.31.9.186:9002"]
+      password: "YcIPfs1829@129"                            #密码
+      dialtimeout: 10                                      #超时时间
+      poolsize: 20
+  
